@@ -1,16 +1,18 @@
 #!/bin/bash
+IPLIST=/tmp/IPLIST
 
-target=$1
+for ip in $(cat $IPLIST)
+do
 
-count=$( ping -c 1 $target | grep icmp* | wc -l )
 
-if [ $count -eq 0 ]
-then
+     ping $ip -c 1 -t 1 &> /dev/null
+     if [ $? -ne 0 ]; then
 
-    echo "Host is not Alive! Try again later.."
+        echo $ip Server is Dead!;
 
-else
+         else
 
-    echo "Yes! Host is Alive!"
+        echo $ip Server is Alive!;
+     fi
 
-fi
+done
