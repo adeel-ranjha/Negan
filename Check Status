@@ -1,0 +1,18 @@
+#!/bin/bash
+IPLIST=/tmp/IPLIST
+
+for ip in $(cat $IPLIST)
+do
+
+
+     ping $ip -c 1 -t 1 &> /dev/null
+     if [ $? -ne 0 ]; then
+
+        echo $ip Server is Dead!;
+
+         else
+
+        echo $ip Server is Alive!;
+     fi
+
+done
