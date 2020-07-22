@@ -2,7 +2,7 @@
 IPLIST=/tmp/IPLIST
 
 for ip in $(cat $IPLIST)
-do
+do 
 
 
      ping $ip -c 1 -t 1 &> /dev/null
@@ -15,4 +15,4 @@ do
         echo $ip Server is Alive!;
      fi
 
-done
+done 
